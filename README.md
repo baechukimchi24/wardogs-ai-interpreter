@@ -10,12 +10,6 @@
 
 **v1.0 Beta부터는 Python이나 Visual Studio 설치 없이 EXE 파일을 더블클릭하여 실행할 수 있습니다.**
 
-<img width="1448" height="1086" alt="menual_1" src="https://github.com/user-attachments/assets/b2fb6c34-70f2-4be7-864f-05e7525d3b80" />
-<img width="1448" height="1086" alt="menual_2" src="https://github.com/user-attachments/assets/78d39c40-fbae-4277-9003-8fb803b9bfdb" />
-<img width="1448" height="1086" alt="menual_3" src="https://github.com/user-attachments/assets/bfb4951f-8ad3-4aa2-aa7a-95aaeaf50e41" />
-<img width="1919" height="1079" alt="menual_4" src="https://github.com/user-attachments/assets/710dceee-dab0-42a2-8179-cbddb461b0b6" />
-
-
 ## 📥 최신 버전 다운로드
 
 👉 **[WARDOGS AI Interpreter v1.0 Beta 다운로드 (무설치 EXE)](https://github.com/baechukimchi24/wardogs-ai-interpreter/releases/tag/v1.0.0-beta)**
@@ -81,10 +75,6 @@ GitHub Releases의 `Assets`에서 Windows Portable ZIP 파일을 다운로드합
 ### 3. 프로그램 실행
 
 `WARDOGS Interpreter.exe`를 더블클릭합니다.
-
-검은 명령 프롬프트 창 없이 프로그램 UI가 실행됩니다.
-
-**Python, Visual Studio, Ollama를 별도로 설치할 필요가 없습니다.**
 
 ### 4. 번역 모델 다운로드
 
@@ -154,11 +144,19 @@ Virtual Audio Cable 등을 이용하면 사용자의 오디오 라우팅 구성�
 
 **1. 초기 설정 및 AI 모델 다운로드**
 
+<img width="1448" height="1086" alt="menual_1" src="https://github.com/user-attachments/assets/b2fb6c34-70f2-4be7-864f-05e7525d3b80" />
 **2. 음성 인식과 자막 최적화**
 
+<img width="1448" height="1086" alt="menual_2" src="https://github.com/user-attachments/assets/78d39c40-fbae-4277-9003-8fb803b9bfdb" />
 **3. 게임 연결 및 실제 사용 방법**
 
-*기존 README에 첨부한 사용 설명서 이미지 4개를 이 위치에 유지하세요.*
+<img width="1448" height="1086" alt="menual_3" src="https://github.com/user-attachments/assets/bfb4951f-8ad3-4aa2-aa7a-95aaeaf50e41" />
+
+**4. 실제 화면**
+
+<img width="1919" height="1079" alt="menual_4" src="https://github.com/user-attachments/assets/710dceee-dab0-42a2-8179-cbddb461b0b6" />
+
+
 
 ---
 

@@ -1,0 +1,6 @@
+# Offline English to Korean: install model using install_argos_ko.py
+argostranslate>=1.9,<2
+
+# Dedicated OPUS-MT translation (downloaded only when selected)
+transformers>=4.46,<5
+sentencepiece>=0.2,<1

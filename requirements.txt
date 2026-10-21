@@ -1,0 +1,11 @@
+PySide6>=6.7,<7
+numpy>=1.26,<3
+scipy>=1.12,<2
+sounddevice>=0.5,<1
+psutil>=5.9,<8
+webrtcvad-wheels>=2.0.14
+faster-whisper>=1.1,<2
+pywin32>=306
+requests>=2.31,<3
+deep-translator>=1.11,<2
+huggingface_hub>=0.30,<2

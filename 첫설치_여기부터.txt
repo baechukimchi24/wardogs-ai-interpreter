@@ -1,0 +1,13 @@
+WARDOGS AI INTERPRETER v0.9 - 설치 안내
+
+1. Windows 11에서 ZIP을 압축 해제합니다.
+2. INSTALL_AND_START.bat 더블클릭. Python 및 Argos 번역 모델을 프로젝트 내부에 자동 설치합니다.
+   Visual Studio, Ollama, 외부 Python 설치는 필요하지 않습니다.
+3. 설치 후 프로그램이 자동 시작됩니다. 이후에는 START.bat만 실행합니다.
+4. 번역 방식: Argos 기본 설치됨 / GGUF 모델+엔진은 원클릭 다운로드와 모델 적용 버튼 사용 / OPUS-MT는 전용 다운로드 버튼 사용.
+5. 음성 감지 기본: 최소 150ms, 종료 대기 300ms. 화면에서 조절 가능.
+6. 영어 답변 추천: 기본 OFF (켜도 번역 LLM과 별도 규칙 기반 처리).
+7. 게임 자막 오버레이 F10 토글 / TTS 출력 장치 자유 선택(VAC Line 1 포함).
+8. Windows 게임 오디오 입력은 Windows Process Loopback으로 별도 캡처되며 VAC를 입력으로 쓰지 않습니다.
+
+자세한 내용은 README_한국어.md를 참고하세요.

@@ -71,7 +71,7 @@ AI 모델의 크기와 실행 방식에 따라 게임 FPS 및 번역 지연시�
 
 최신 설치 파일은 GitHub Releases에서 다운로드할 수 있습니다.
 
-👉 최신 버전 다운로드
+👉 **[최신 버전 다운로드](https://github.com/baechukimchi24/wardogs-ai-interpreter/releases/latest)**
 
 설치 방법
 

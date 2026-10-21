@@ -1,7 +1,7 @@
 from pathlib import Path
 import subprocess,sys,shutil
 root=Path(__file__).resolve().parent
-cmd=[sys.executable,'-m','PyInstaller','--clean','--noconfirm','--onedir','--windowed','--name','WARDOGS Interpreter','--paths',str(root),'--collect-all','ctranslate2','--collect-all','faster_whisper','--collect-all','argostranslate','--collect-all','sounddevice','--hidden-import','win32com.client','--hidden-import','pythoncom','--hidden-import','pywintypes',str(root/'exe_entry.py')]
+cmd=[sys.executable,'-m','PyInstaller','--clean','--noconfirm','--onedir','--windowed','--name','WARDOGS Interpreter','--paths',str(root),'--additional-hooks-dir',str(root/'hooks'),'--collect-all','ctranslate2','--collect-all','faster_whisper','--collect-all','argostranslate','--collect-all','sounddevice','--hidden-import','win32com.client','--hidden-import','pythoncom','--hidden-import','pywintypes',str(root/'exe_entry.py')]
 subprocess.run(cmd,cwd=root,check=True)
 d=root/'dist'/'WARDOGS Interpreter';(d/'bin').mkdir(exist_ok=True)
 for filename in ['process_loopback.exe','process_loopback.sha256']:

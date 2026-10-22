@@ -14,6 +14,7 @@ import numpy as np
 from PySide6.QtCore import QObject, Signal
 
 from core import TranslationEngine, VoiceSegmenter, pcm48_stereo_to_16_mono, recommendations, offline_fallback
+from speech_filter import SpeechNoiseFilter
 
 ROOT = APP_ROOT
 NATIVE = ROOT / "bin" / "process_loopback.exe"
@@ -56,11 +57,15 @@ class Interpreter:
         self.replies_enabled = False  # Adjustable without restarting game capture.
         self.fast_backlog_fallback = True  # Favor prompt subtitles when LLM queue grows.
         self.dropped_clips = 0
+        self.noise_filter = SpeechNoiseFilter()
+        self.filtered_clips = 0
 
     def start(self, pid: int, vad_level: int, model_name: str, mode: str, api_key: str,
               portable_model: str = "qwen3-4b-q4", portable_compute: str = "cpu",
               min_voice_ms: int = 150, silence_end_ms: int = 300,
-              recommendations_enabled: bool = False, fast_backlog_fallback: bool = True):
+              recommendations_enabled: bool = False, fast_backlog_fallback: bool = True,
+              ignored_phrases: str | None = None, block_single_fire: bool = True,
+              suppress_repeats: bool = True):
         if self.active.is_set():
             return
         if not NATIVE.exists():
@@ -70,6 +75,8 @@ class Interpreter:
         self.active.set()
         self.counter = 0
         self.dropped_clips = 0
+        self.filtered_clips = 0
+        self.noise_filter = SpeechNoiseFilter(ignored_phrases, block_single_fire, suppress_repeats)
         self.replies_enabled = bool(recommendations_enabled)
         self.fast_backlog_fallback = bool(fast_backlog_fallback)
         clips: queue.Queue = queue.Queue(maxsize=16)
@@ -184,16 +191,23 @@ class Interpreter:
                     samples, language="en", beam_size=1, best_of=1,
                     condition_on_previous_text=False, vad_filter=False,
                     no_speech_threshold=0.45,
-                    initial_prompt="Game voice chat. Enemy, sniper, objective, push, revive, ammo, backup, medic."
+                    initial_prompt="Sniper, objective, revive, ammunition, backup, medic, rooftop, flank."
                 )
                 segments = list(segments)
                 text = " ".join(seg.text.strip() for seg in segments).strip()
                 # Short tactical phrases such as "No", "Go", "OK" are valid.
                 if not text or not any(ch.isalnum() for ch in text):
                     continue
-                suspicious = {"thank you for watching", "subscribe to my channel", "thanks for watching",
-                              "subtitles by", "the end", "you you you"}
-                if text.lower().strip(".! ") in suspicious:
+                reason = self.noise_filter.reject(
+                    text,
+                    avg_logprob=min((getattr(seg, 'avg_logprob', 0) for seg in segments), default=0),
+                    no_speech_prob=max((getattr(seg, 'no_speech_prob', 0) for seg in segments), default=0),
+                )
+                if reason:
+                    self.filtered_clips += 1
+                    # Only the counter/reason is shown; don't spam raw transcripts.
+                    if self.filtered_clips <= 3 or self.filtered_clips % 10 == 0:
+                        self.signals.status.emit(f'게임 효과음 의심 음성 무시: {self.filtered_clips}회 ({reason})')
                     continue
                 if not self._is_current(session):
                     return

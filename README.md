@@ -12,7 +12,7 @@
 
 ## 📥 최신 버전 다운로드
 
-👉 **[WARDOGS AI Interpreter v1.0 Beta 다운로드 (무설치 EXE)](https://github.com/baechukimchi24/wardogs-ai-interpreter/releases/tag/v1.0.0-beta)**
+👉 **[WARDOGS AI Interpreter v1.1 Beta 다운로드 (무설치 EXE)](https://github.com/baechukimchi24/wardogs-ai-interpreter/releases/tag/v1.1-beta)**
 
 Windows 11 64비트용 무설치 버전입니다.
 
